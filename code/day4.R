@@ -39,7 +39,7 @@ transfer_matrix = makeAdjacencyMatrix(length(input[[1]]), length(input))
 sum(unlist(input) & transfer_matrix %*% unlist(input) < 4)
 
 # part 2
-state = unlist(read_input("data/day4/input"))
+state = unlist(input)
 while (T) {
   can_remove = state & transfer_matrix %*% state < 4
   if (!any(can_remove)) {
