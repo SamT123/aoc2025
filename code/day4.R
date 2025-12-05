@@ -33,13 +33,15 @@ makeAdjacencyMatrix = function(ncol, nrow) {
 }
 
 input = read_input("data/day4/input")
-transfer_matrix = makeAdjacencyMatrix(length(input[[1]]), length(input))
 
 # part 1
-sum(unlist(input) & transfer_matrix %*% unlist(input) < 4)
+transfer_matrix = makeAdjacencyMatrix(length(input[[1]]), length(input))
+state = unlist(input)
+
+sum(state & transfer_matrix %*% state < 4)
 
 # part 2
-state = unlist(input)
+initial_state = state
 while (T) {
   can_remove = state & transfer_matrix %*% state < 4
   if (!any(can_remove)) {
@@ -49,4 +51,4 @@ while (T) {
   state = state & !can_remove
 }
 
-sum(unlist(input)) - sum(state)
+sum(initial_state) - sum(state)

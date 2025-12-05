@@ -1,4 +1,5 @@
 library(tidyverse)
+options("scipen" = 100, "digits" = 4)
 
 read_input = function(path) {
   input = readLines(path)
@@ -43,10 +44,10 @@ while (i < length(ord_intervals)) {
       ord_intervals[[i + 1]][[2]]
     )
     ord_intervals = ord_intervals[-(i + 1)]
-  } else {
-    i = i + 1
+    next
   }
+
+  i = i + 1
 }
 
-options("scipen" = 100, "digits" = 4)
 sum(map_dbl(ord_intervals, diff)) + length(ord_intervals)
