@@ -67,9 +67,9 @@ plot_intervals = function(curr_intervals, orig_intervals, curr) {
   mtext(
     text,
     side = 3,
-    line = -1.5,
+    line = -1,
     at = par("usr")[1] + 0.16 * diff(par("usr")[1:2]),
-    cex = 1,
+    cex = 1.2,
     adj = 1,
     padj = 1,
     family = "mono"
