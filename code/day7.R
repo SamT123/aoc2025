@@ -19,6 +19,7 @@ layerToTransformMatrix = function(layer) {
 
 input = read_input("data/day7/input")
 input$transforms = purrr::map(input$layers, layerToTransformMatrix)
+input$full_transform = purrr::reduce(input$transforms, `%*%`)
 
 # part 1
 state = input$state
@@ -31,4 +32,4 @@ for (transform in input$transforms) {
 splits
 
 # part 2
-sum(purrr::reduce(input$transforms, `%*%`, .init = input$state))
+sum(input$state %*% input$full_transform)
