@@ -10,8 +10,8 @@ layerToTransformMatrix = function(layer) {
   matrix = diag(length(layer))
   splitter = which(layer == "^")
   for (s in splitter) {
-    s_neigh = s + c(-1, 1)
-    matrix[s, s_neigh[s_neigh >= 1 & s_neigh <= length(layer)]] = 1
+    s_neigh = purrr::keep(s + c(-1, 1), dplyr::between, 1, length(layer))
+    matrix[s, s_neigh] = 1
   }
   diag(matrix)[splitter] = 0
   matrix
