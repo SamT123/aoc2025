@@ -39,4 +39,4 @@ while (length(unique(circuits$circuit_num)) > 1) {
   circuits$circuit_num[circuits$circuit_num == new_pair[[2]]] = new_pair[[1]]
 }
 
-prod(junction_boxes[new_pair, "x"])
+prod(junction_boxes[pair_distances$j1_j2[[i - 1]], "x"])
